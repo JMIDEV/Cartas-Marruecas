@@ -15218,35 +15218,6 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	};
 })();
 cr.shaders = {};
-cr.shaders["warp"] = {src: ["varying mediump vec2 vTex;",
-"uniform lowp sampler2D samplerFront;",
-"uniform mediump float seconds;",
-"uniform mediump float pixelWidth;",
-"uniform mediump float pixelHeight;",
-"uniform mediump float layerScale;",
-"uniform mediump float freqX;",
-"uniform mediump float freqY;",
-"uniform mediump float ampX;",
-"uniform mediump float ampY;",
-"uniform mediump float speedX;",
-"uniform mediump float speedY;",
-"void main(void)",
-"{",
-"mediump float boxLeft = 0.0;",
-"mediump float boxTop = 0.0;",
-"mediump float aspect = pixelHeight / pixelWidth;",
-"mediump vec2 p = vTex;",
-"p.x += (cos((vTex.y - boxTop) * freqX / layerScale / (pixelWidth * 750.0) + (seconds * speedX)) * ampX * pixelWidth * layerScale);",
-"p.y += (sin((vTex.x - boxLeft) * freqY * aspect / layerScale / (pixelHeight * 750.0) + (seconds * speedY)) * ampY * pixelHeight * layerScale);",
-"gl_FragColor = texture2D(samplerFront, p);",
-"}"
-].join("\n"),
-	extendBoxHorizontal: 25,
-	extendBoxVertical: 25,
-	crossSampling: false,
-	preservesOpaqueness: false,
-	animated: true,
-	parameters: [["freqX", 0, 0], ["freqY", 0, 0], ["ampX", 0, 0], ["ampY", 0, 0], ["speedX", 0, 0], ["speedY", 0, 0]] }
 ;
 ;
 cr.plugins_.Arr = function(runtime)
@@ -28170,13 +28141,13 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Dictionary,
 	cr.plugins_.Browser,
 	cr.plugins_.Function,
-	cr.plugins_.Particles,
 	cr.plugins_.Keyboard,
 	cr.plugins_.LocalStorage,
-	cr.plugins_.Touch,
+	cr.plugins_.Particles,
 	cr.plugins_.Spritefont2,
-	cr.plugins_.Sprite,
 	cr.plugins_.Tilemap,
+	cr.plugins_.Touch,
+	cr.plugins_.Sprite,
 	cr.behaviors.custom,
 	cr.behaviors.Platform,
 	cr.behaviors.bound,
